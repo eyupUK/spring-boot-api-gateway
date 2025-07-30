@@ -1,6 +1,7 @@
 # Spring Boot API Gateway (Read‑Only Proxy)
 
-This is a lightweight **Spring Boot** service that acts as a read‑only proxy (API Gateway) in front of a Node.js “Apps” service. External teams can retrieve app data without direct access to the JSON file or the internal backend.
+### This is a lightweight **Spring Boot** service that acts as a read‑only proxy (API Gateway) in front of a Node.js “Apps” service.
+### External teams can retrieve app data without direct access to the JSON file or the internal backend.
 
 ---
 

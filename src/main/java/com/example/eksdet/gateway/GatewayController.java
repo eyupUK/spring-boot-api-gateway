@@ -1,5 +1,6 @@
 package com.example.eksdet.gateway;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.*;
@@ -11,11 +12,13 @@ public class GatewayController {
     private final RestTemplate rest = new RestTemplate();
     private final String NODE_BASE = "http://localhost:3000/apps";
 
+    @Operation(summary = "List all apps")
     @GetMapping
     public ResponseEntity<Object> all() {
         return rest.getForEntity(NODE_BASE, Object.class);
     }
 
+    @Operation(summary = "Find apps by app name")
     @GetMapping("/{name}")
     public Object byName(@PathVariable String name) {
         try {
@@ -30,7 +33,8 @@ public class GatewayController {
         }
     }
 
-    @GetMapping(params = "owner")
+    @Operation(summary = "Find apps by owner")
+    @GetMapping(path = "/search", params = "owner")
     public ResponseEntity<Object> byOwner(@RequestParam String owner) {
         String url = NODE_BASE + "/search?owner=" + owner;
         try {

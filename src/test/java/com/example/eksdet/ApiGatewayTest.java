@@ -33,7 +33,7 @@ public class ApiGatewayTest {
     @Test
     public void gatewayByOwner_found() {
         given().when()
-                .get("/gateway/apps?owner=ownerOne")
+                .get("/gateway/apps/search?owner=ownerOne")
                 .then().statusCode(200)
                 .body("appData.appOwner", everyItem(equalTo("ownerOne")));
     }
@@ -41,7 +41,7 @@ public class ApiGatewayTest {
     @Test
     public void gatewayByOwner_notFound() {
         given().when()
-                .get("/gateway/apps?owner=unknownTeam")
+                .get("/gateway/apps/search?owner=unknownTeam")
                 .then().statusCode(404).body("error", equalTo("No apps found for the given owner"));
     }
 }
